@@ -3,9 +3,65 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { CircularText } from '@/components/ui';
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
+
+  // Animation that loops continuously
+  const rotateAnimation = {
+    animate: { 
+      rotate: 360,
+      transition: { 
+        duration: 20,
+        ease: "linear",
+        repeat: Infinity,
+      }
+    }
+  };
+
+  // Add CSS keyframes for circle drawing animation
+  React.useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes circleDraw {
+        0% {
+          stroke-dashoffset: 377;
+        }
+        50% {
+          stroke-dashoffset: 0;
+        }
+        100% {
+          stroke-dashoffset: -377;
+        }
+      }
+      
+      @keyframes circleDrawReverse {
+        0% {
+          stroke-dashoffset: -440;
+        }
+        50% {
+          stroke-dashoffset: 0;
+        }
+        100% {
+          stroke-dashoffset: 440;
+        }
+      }
+      
+      .animate-circle-draw {
+        animation: circleDraw 4s ease-in-out infinite;
+      }
+      
+      .animate-circle-draw-reverse {
+        animation: circleDrawReverse 6s ease-in-out infinite;
+      }
+    `;
+    document.head.appendChild(style);
+    
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
 
   return (
     <div 
@@ -63,7 +119,70 @@ const Hero = () => {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="font-the-seasons tagline text-base sm:text-lg md:text-xl mb-8 md:mb-10 max-w-xl text-text-primary leading-relaxed"
             >
-              Kami Hanya Fokus pada Rambut, Jadi Kami Tahu yang Terbaik
+              Kami Hanya Fokus pada Rambut, Jadi Kami Tahu yang <span className="relative inline-block">
+                <span className="relative z-10 italic">Terbaik</span>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <CircularText 
+                    text="★ TERBAIK ★ TERBAIK ★ TERBAIK ★" 
+                    size={120} 
+                    color="var(--primary)" 
+                    speed={15}
+                  />
+                  {/* Animated circle stroke around "Terbaik" */}
+                  <svg 
+                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" 
+                    width="130" 
+                    height="130" 
+                    viewBox="0 0 130 130"
+                  >
+                    <defs>
+                      <filter id="glow1" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="2" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                      </filter>
+                    </defs>
+                    <circle
+                      cx="65"
+                      cy="65"
+                      r="60"
+                      fill="none"
+                      stroke="var(--accent)"
+                      strokeWidth="2"
+                      strokeDasharray="377"
+                      strokeDashoffset="377"
+                      className="animate-circle-draw"
+                      filter="url(#glow1)"
+                    />
+                  </svg>
+                  
+                  {/* Second animated circle with different size and timing */}
+                  <svg 
+                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" 
+                    width="150" 
+                    height="150" 
+                    viewBox="0 0 150 150"
+                  >
+                    <defs>
+                      <filter id="glow2" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="1.5" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                      </filter>
+                    </defs>
+                    <circle
+                      cx="75"
+                      cy="75"
+                      r="70"
+                      fill="none"
+                      stroke="var(--primary)"
+                      strokeWidth="1.5"
+                      strokeDasharray="440"
+                      strokeDashoffset="440"
+                      className="animate-circle-draw-reverse"
+                      filter="url(#glow2)"
+                    />
+                  </svg>
+                </div>
+              </span>
             </motion.p>
             
             <motion.div 
@@ -83,32 +202,34 @@ const Hero = () => {
           </div>
           
           {/* Right content - Product preview */}
-          <div className="w-full lg:w-1/2 flex justify-center mt-8 lg:mt-0">
+          <div className="w-full lg:w-1/2 flex justify-center items-center mt-8 lg:mt-0">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="relative"
+              className="relative h-[300px] sm:h-[350px] md:h-[400px] w-full max-w-[500px] flex items-center justify-center"
             >
-              <div className="relative z-10">
+              {/* First product image */}
+              <div className="relative z-20 mr-6 xs:mr-8 sm:mr-12 lg:mr-16">
                 <img 
-                  src="/images/product-1.jpg" 
+                  src="/images/products/hair-powder.png" 
                   alt="Hair Powder" 
-                  className="w-48 sm:w-56 md:w-64 h-auto rounded-lg shadow-xl transform -rotate-6"
+                  className="w-36 xs:w-40 sm:w-48 md:w-56 lg:w-64 h-auto rounded-lg shadow-xl transform -rotate-6 object-contain bg-white/80 backdrop-blur-sm p-2"
                 />
-                <div className="absolute -bottom-4 -right-4 bg-white py-1 sm:py-2 px-2 sm:px-4 rounded-lg shadow-lg">
-                  <span className="text-text-primary text-sm sm:text-base font-medium">Hair Powder</span>
+                <div className="absolute -bottom-4 -right-4 bg-white py-1 sm:py-2 px-2 sm:px-4 rounded-lg shadow-lg z-30">
+                  <span className="text-text-primary text-xs sm:text-sm md:text-base font-medium">Hair Powder</span>
                 </div>
               </div>
               
-              <div className="absolute top-16 sm:top-20 -right-12 sm:-right-20 z-0">
+              {/* Second product image */}
+              <div className="absolute top-12 xs:top-14 sm:top-16 md:top-20 right-0 z-10">
                 <img 
-                  src="/images/product-2.jpg" 
+                  src="/images/products/detangler-plus.png" 
                   alt="Hair Serum" 
-                  className="w-48 sm:w-56 md:w-64 h-auto rounded-lg shadow-xl transform rotate-6"
+                  className="w-36 xs:w-40 sm:w-48 md:w-56 lg:w-64 h-auto rounded-lg shadow-xl transform rotate-6 object-contain bg-white/80 backdrop-blur-sm p-2"
                 />
-                <div className="absolute -bottom-4 -left-4 bg-white py-1 sm:py-2 px-2 sm:px-4 rounded-lg shadow-lg">
-                  <span className="text-text-primary text-sm sm:text-base font-medium">Hair Serum</span>
+                <div className="absolute -bottom-4 -left-4 bg-white py-1 sm:py-2 px-2 sm:px-4 rounded-lg shadow-lg z-30">
+                  <span className="text-text-primary text-xs sm:text-sm md:text-base font-medium">Hair Serum</span>
                 </div>
               </div>
             </motion.div>

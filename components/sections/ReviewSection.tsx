@@ -57,15 +57,27 @@ const ReviewSection = () => {
   };
   
   return (
-    <section id="reviews" className="py-20 bg-secondary">
-      <div className="container-padding mx-auto">
+    <section 
+      id="reviews" 
+      className="py-20 relative"
+      style={{
+        backgroundImage: "url('/images/Sampul Profil.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat"
+      }}
+    >
+      {/* Overlay to ensure text readability */}
+      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+      
+      <div className="container-padding mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="heading-lg mb-2">Reviews</h2>
+          <h2 className="heading-lg mb-2 text-white">Reviews</h2>
           <div className="flex justify-center mb-4">
             {[1, 2, 3, 4, 5].map((star) => (
               <FiStar key={star} className="text-accent w-6 h-6 mx-1 fill-current" />

@@ -123,6 +123,20 @@ body {
   opacity: 0;
 }
 
+/* Circular Text Animation */
+@keyframes rotateText {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.circular-text {
+  transform-origin: center;
+}
+
 @layer utilities {
   .animate-delay-100 { animation-delay: 100ms; }
   .animate-delay-200 { animation-delay: 200ms; }
