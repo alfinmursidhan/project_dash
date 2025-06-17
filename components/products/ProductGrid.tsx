@@ -115,18 +115,18 @@ const ProductGrid = ({
     );
   }
 
-  // Determine grid columns based on columns prop and responsive design
-  const gridClass = `grid grid-cols-1 ${
-    columns >= 2 ? 'sm:grid-cols-2' : ''
+  // Determine grid columns based on columns prop and responsive design with smaller gap
+  const gridClass = `grid grid-cols-2 ${
+    columns >= 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-2'
   } ${
-    columns >= 3 ? 'lg:grid-cols-3' : ''
+    columns >= 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'
   } ${
-    columns >= 4 ? '2xl:grid-cols-4' : ''
-  } gap-5 md:gap-6 lg:gap-8`;
+    columns >= 5 ? 'xl:grid-cols-5' : ''
+  } gap-3 sm:gap-4 md:gap-5`;
 
   return (
     <LayoutGroup>
-      <div className="w-full my-8 px-2 sm:px-4 md:px-0" ref={ref}>
+      <div className="w-full my-4 sm:my-6 px-2 sm:px-4 md:px-0" ref={ref}>
         {(title || description) && (
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -142,11 +142,11 @@ const ProductGrid = ({
                 }
               }
             }}
-            className="mb-16 text-center px-4"
+            className="mb-8 sm:mb-10 text-center px-4"
           >
             {title && (
               <motion.h2 
-                className="heading-lg mb-6 relative inline-block"
+                className="heading-lg mb-4 relative inline-block"
                 layout
               >
                 {title}
@@ -164,7 +164,7 @@ const ProductGrid = ({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
-                className="text-gray-600 max-w-2xl mx-auto leading-relaxed"
+                className="text-gray-600 max-w-2xl mx-auto leading-relaxed text-sm"
                 layout
               >
                 {description}

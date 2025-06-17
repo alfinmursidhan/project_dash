@@ -122,25 +122,26 @@ export default function Connect() {
               
               <h2 className="heading-md mb-6">Follow Us</h2>
               
-              <div className="flex space-x-4 mb-8">
+              <div className="flex flex-col sm:flex-row gap-3 mb-8">
                 <a 
                   href="https://instagram.com" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center w-12 h-12 rounded-full bg-primary text-white hover:bg-accent transition-all duration-300"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-white hover:bg-accent transition-all duration-300"
                 >
-                  <FiInstagram size={20} />
+                  <FiInstagram size={18} />
+                  <span className="font-medium">Instagram</span>
                 </a>
                 <a 
                   href="https://tiktok.com" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center w-12 h-12 rounded-full bg-primary text-white hover:bg-accent transition-all duration-300"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-white hover:bg-accent transition-all duration-300"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
+                    width="18"
+                    height="18"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -152,6 +153,7 @@ export default function Connect() {
                     <path d="M15 8c0 1.657-1.343 3-3 3v4"></path>
                     <path d="M21 8V7c-1.657 0-3-1.343-3-3h-1c0 1.657-1.343 3-3 3"></path>
                   </svg>
+                  <span className="font-medium">TikTok</span>
                 </a>
               </div>
               
@@ -162,6 +164,7 @@ export default function Connect() {
           </div>
         </div>
       </div>
+      
       
       <Footer />
     </main>

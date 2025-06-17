@@ -15,4 +15,5 @@ export { default as Hero } from './sections/Hero';
 export { default as Features } from './sections/Features';
 export { default as ReviewSection } from './sections/ReviewSection';
 export { default as StoreLinks } from './sections/StoreLinks';
-export { default as EthicalSection } from './sections/EthicalSection'; 
+export { default as EthicalSection } from './sections/EthicalSection';
+export { default as ThankYouSection } from './sections/ThankYouSection'; 

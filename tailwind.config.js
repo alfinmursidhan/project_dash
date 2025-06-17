@@ -9,18 +9,32 @@ module.exports = {
     extend: {
       colors: {
         primary: '#39644a',
-        secondary: '#f6efdc',
+        secondary: '#F3F3F3',
         accent: '#E8B87D',
         'text-primary': '#39644a',
-        'text-secondary': '#f6efdc'
+        'text-secondary': '#F3F3F3'
       },
       fontFamily: {
         sans: ['var(--font-montserrat)', 'sans-serif'],
         serif: ['var(--font-the-seasons)', 'serif'],
         'the-seasons': ['var(--font-the-seasons)', 'serif'],
-        'carelia': ['var(--font-carelia)', 'serif'],
+        'yeseva': ['var(--font-yeseva-one)', 'serif'],
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }) {
+      const newUtilities = {
+        '.scrollbar-hide': {
+          /* Firefox */
+          'scrollbar-width': 'none',
+          /* Safari and Chrome */
+          '&::-webkit-scrollbar': {
+            display: 'none'
+          }
+        }
+      }
+      addUtilities(newUtilities);
+    }
+  ],
 } 

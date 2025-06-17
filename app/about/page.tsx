@@ -5,8 +5,8 @@ import { motion } from 'framer-motion';
 import EthicalSection from '@/components/sections/EthicalSection';
 
 export const metadata = {
-  title: 'About Us - No Bad Hair',
-  description: 'Learn about No Bad Hair, our mission, and our commitment to quality hair products.',
+  title: 'About Us - Dahs',
+  description: 'Learn about Dahs, our mission, and our commitment to quality hair products.',
 };
 
 export default function About() {
@@ -22,7 +22,7 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h1 className="heading-lg mb-4">About No Bad Hair</h1>
+            <h1 className="heading-lg mb-4">About Dahs</h1>
             <p className="text-gray-600 max-w-2xl mx-auto">
               A solution oriented brand based in Indonesia, focusing on minimalism and quality.
             </p>

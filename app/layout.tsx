@@ -1,5 +1,5 @@
 import './globals.css';
-import { Montserrat } from 'next/font/google';
+import { Montserrat, Yeseva_One } from 'next/font/google';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
@@ -31,23 +31,13 @@ const theSeasons = localFont({
   preload: true,
 });
 
-// Carelia font for main headings
-const carelia = localFont({
-  src: [
-    {
-      path: '../public/fonts/carelia/Carelia-Upright.woff2',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: '../public/fonts/carelia/Carelia-Upright.woff',
-      weight: '400',
-      style: 'normal',
-    },
-  ],
+// Yeseva One font for main headings
+const yesevaOne = Yeseva_One({
+  subsets: ['latin'],
   display: 'swap',
-  variable: '--font-carelia',
+  variable: '--font-yeseva-one',
   preload: true,
+  weight: '400', // This is the only weight available for Yeseva One
 });
 
 export const metadata: Metadata = {
@@ -61,7 +51,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${theSeasons.variable} ${carelia.variable}`}>
+    <html lang="en" className={`${montserrat.variable} ${theSeasons.variable} ${yesevaOne.variable}`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

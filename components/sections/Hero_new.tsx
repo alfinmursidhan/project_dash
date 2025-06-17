@@ -140,47 +140,6 @@ const Hero = () => {
                 <span className="tracking-normal">TANPA RIBET</span>
               </div>
             </motion.h1>
-            
-            {/* Subtitle with The Seasons font - Font size increased for mobile */}
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="font-the-seasons tagline text-lg sm:text-xl md:text-2xl mx-auto max-w-2xl text-text-primary leading-relaxed mb-8"
-            >
-              Kami Hanya Fokus pada Rambut, Jadi Kami Tahu yang <span className="relative inline-block">
-                <span className="relative z-10 italic font-medium">Terbaik</span>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-                  {/* Elips pertama di sekitar "Terbaik" dengan ukuran yang lebih sesuai */}
-                  <svg 
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" 
-                    width="85" 
-                    height="38" 
-                    viewBox="0 0 75 32"
-                  >
-                    <defs>
-                      <filter id="glow1" x="-20%" y="-20%" width="140%" height="140%">
-                        <feGaussianBlur stdDeviation="0.5" result="blur" />
-                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                      </filter>
-                    </defs>
-                    <ellipse
-                      cx="37.5"
-                      cy="16"
-                      rx="36"
-                      ry="14"
-                      fill="none"
-                      stroke="var(--accent)"
-                      strokeWidth="1.5"
-                      strokeDasharray="160"
-                      strokeDashoffset="160"
-                      className="animate-ellipse-draw"
-                      filter="url(#glow1)"
-                    />
-                  </svg>
-                </div>
-              </span>
-            </motion.p>
 
             {/* Call to action button */}
             <motion.div

@@ -94,7 +94,7 @@ const Hero = () => {
     <div 
       ref={heroRef} 
       id="home"
-      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-gradient-primary pt-24 sm:pt-20"
+      className="relative min-h-screen w-full flex items-start sm:items-center overflow-hidden bg-gradient-primary pt-24 sm:pt-20"
     >
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-5">
@@ -109,53 +109,51 @@ const Hero = () => {
       </div>
       
       {/* Main content */}
-      <div className="container-padding mx-auto relative z-10 py-0 text-center">
-        <div className="flex flex-col items-center justify-center">
-          {/* Center Content */}
-          <div className="w-full max-w-3xl text-text-primary mb-16">
+      <div className="container-padding mx-auto relative z-10 py-0 md:py-0">
+        <div className="flex flex-col lg:flex-row items-center">
+          {/* Left content */}
+          <div className="w-full lg:w-1/2 text-text-primary mb-0 lg:mb-0 px-3 sm:px-6 md:px-0 lg:-mt-12">
             {/* Main heading with Yeseva One font */}
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="font-yeseva heading-xl mb-6 md:mb-8 relative tracking-tight text-primary"
-              style={{ letterSpacing: "-0.01em", fontSize: "clamp(2.8rem, 10vw, 5rem)" }}
+              className="font-yeseva heading-xl mb-3 md:mb-5 relative tracking-tight text-primary"
+              style={{ letterSpacing: "-0.01em", fontSize: "clamp(2.5rem, 8vw, 4rem)" }}
             >
-              <div className="flex flex-col text-left">
-                <span className="relative">
-                  RAMBUT
-                  <motion.div 
-                    className="absolute -bottom-1 left-0 h-1 bg-accent"
-                    initial={{ width: "0%" }}
-                    animate={{ width: "100%" }}
-                    transition={{ 
-                      duration: 1.2, 
-                      ease: "easeOut",
-                      delay: 0.5
-                    }}
-                  />
-                </span>
-                <span className="relative pl-[30%] tracking-normal">SEHAT,</span>
-                <span className="tracking-normal">PRAKTIS</span>
-                <span className="tracking-normal">TANPA RIBET</span>
-              </div>
+              <span className="relative inline-block">
+                NATURAL
+                <motion.div 
+                  className="absolute -bottom-1 left-0 h-1 bg-accent"
+                  initial={{ width: "0%" }}
+                  animate={{ width: "100%" }}
+                  transition={{ 
+                    duration: 1.2, 
+                    ease: "easeOut",
+                    delay: 0.5
+                  }}
+                />
+              </span>
+              <br />
+              <span className="tracking-normal">HAIR</span><br />
+              <span className="tracking-wide">SOLUTIONS</span>
             </motion.h1>
             
-            {/* Subtitle with The Seasons font - Font size increased for mobile */}
+            {/* Subtitle with The Seasons font */}
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="font-the-seasons tagline text-lg sm:text-xl md:text-2xl mx-auto max-w-2xl text-text-primary leading-relaxed mb-8"
+              className="font-the-seasons tagline text-base sm:text-lg md:text-xl max-w-xl text-text-primary leading-relaxed"
             >
               Kami Hanya Fokus pada Rambut, Jadi Kami Tahu yang <span className="relative inline-block">
-                <span className="relative z-10 italic font-medium">Terbaik</span>
+                <span className="relative z-10 italic">Terbaik</span>
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
                   {/* Elips pertama di sekitar "Terbaik" dengan ukuran yang lebih sesuai */}
                   <svg 
                     className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" 
-                    width="85" 
-                    height="38" 
+                    width="75" 
+                    height="32" 
                     viewBox="0 0 75 32"
                   >
                     <defs>
@@ -171,7 +169,7 @@ const Hero = () => {
                       ry="14"
                       fill="none"
                       stroke="var(--accent)"
-                      strokeWidth="1.5"
+                      strokeWidth="1"
                       strokeDasharray="160"
                       strokeDashoffset="160"
                       className="animate-ellipse-draw"
@@ -181,43 +179,54 @@ const Hero = () => {
                 </div>
               </span>
             </motion.p>
-
-            {/* Call to action button */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              className="mt-4"
-            >
+          </div>
           
-               
+          {/* Right content - Product preview */}
+          <div className="w-full lg:w-1/2 flex justify-center items-center mt-0 lg:-mt-24 -ml-0 sm:-ml-0 md:-ml-0">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="relative h-[320px] sm:h-[400px] md:h-[450px] w-full max-w-[320px] sm:max-w-[550px] flex items-center justify-center"
+            >
+              {/* First product image */}
+              <div className="relative z-20 mr-0 xs:mr-6 sm:mr-14 lg:mr-20 -ml-4 xs:-ml-6 sm:-ml-0 lg:-mt-16 -mt-16">
+                <img 
+                  src="/images/products/hair-powder.png" 
+                  alt="Glycolic Bright" 
+                  className="w-40 xs:w-44 sm:w-56 md:w-64 lg:w-72 h-auto rounded-lg shadow-xl object-contain p-2 drop-shadow-lg"
+                />
+                <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 bg-white py-1 px-2 sm:py-2 sm:px-4 rounded-lg shadow-lg z-30">
+                  <span className="text-text-primary text-xs sm:text-sm md:text-base font-medium">Glycolic Bright</span>
+                </div>
+              </div>
               
+              {/* Second product image */}
+              <div className="absolute top-16 xs:top-20 sm:top-24 md:top-28 lg:top-8 right-4 xs:right-8 sm:right-4 md:right-0 z-10">
+                <img 
+                  src="/images/products/detangler-plus.png" 
+                  alt="Daily UV SPF 50" 
+                  className="w-40 xs:w-44 sm:w-56 md:w-64 lg:w-72 h-auto rounded-lg shadow-xl object-contain p-2 drop-shadow-lg"
+                />
+                <div className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 bg-white py-1 px-2 sm:py-2 sm:px-4 rounded-lg shadow-lg z-30">
+                  <span className="text-text-primary text-xs sm:text-sm md:text-base font-medium">Daily UV SPF 50</span>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
       </div>
       
-      {/* Scroll indicator - Fixed position with larger font for mobile */}
-      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+      {/* Scroll indicator */}
+      <div className="absolute bottom-6 sm:bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.7 }}
-          transition={{ duration: 0.7, delay: 1.5 }}
-          className="flex flex-col items-center"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.8, repeat: Infinity, repeatType: "reverse", repeatDelay: 0.5 }}
         >
-          <p className="text-primary/80 uppercase text-sm sm:text-xs tracking-widest mb-3 font-medium">Scroll Down</p>
-          <div className="w-px h-10 bg-primary/30 mx-auto">
-            <motion.div 
-              className="w-full h-1/2 bg-primary"
-              animate={{ 
-                y: [0, 20, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
+          <p className="text-primary/80 uppercase text-xs tracking-widest mb-1 sm:mb-2">Scroll Down</p>
+          <div className="w-px h-4 sm:h-10 bg-primary/30 mx-auto">
+            <div className="w-full h-1/3 bg-primary animate-pulse" />
           </div>
         </motion.div>
       </div>

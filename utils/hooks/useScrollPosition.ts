@@ -18,7 +18,7 @@ export function useScrollPosition() {
       }
       
       // Determine which section is currently in view
-      const sections = ['home', 'shop', 'connect', 'about', 'reviews'];
+      const sections = ['home', 'connect', 'about', 'shop', 'ethical', 'reviews'];
       let currentSection = 'home';
       
       for (const section of sections) {

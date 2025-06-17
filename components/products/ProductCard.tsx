@@ -43,21 +43,21 @@ const ProductCard = ({ id, name, description, image, price, index }: ProductCard
 
   return (
     <motion.div 
-      className="h-full w-full flex flex-col rounded-xl overflow-hidden bg-white shadow-sm transition-shadow duration-500"
+      className="h-full w-full flex flex-col rounded-lg overflow-hidden bg-white shadow-sm transition-shadow duration-500"
       variants={cardVariants}
       initial="hidden"
       animate="visible"
       custom={index}
       whileHover={{ 
-        boxShadow: "0 10px 40px rgba(0, 0, 0, 0.1)",
-        y: -5,
+        boxShadow: "0 8px 20px rgba(0, 0, 0, 0.08)",
+        y: -3,
         transition: { duration: 0.4, ease: TRANSITIONS.easeOut }
       }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
     >
       <Link href={`/product/${id}`} className="block overflow-hidden h-full flex flex-col">
-        <div className="overflow-hidden relative h-[280px]">
+        <div className="overflow-hidden relative h-[180px] sm:h-[220px]">
           {/* Background image with hover effect */}
           <motion.div 
             className="absolute inset-0 bg-cover bg-center"
@@ -69,7 +69,7 @@ const ProductCard = ({ id, name, description, image, price, index }: ProductCard
           
           {/* Price tag with animation */}
           <motion.div 
-            className="absolute top-4 right-4 py-1.5 px-4 rounded-full text-text-primary text-sm font-semibold backdrop-blur-sm"
+            className="absolute top-2 right-2 py-1 px-3 rounded-full text-text-primary text-xs font-semibold backdrop-blur-sm"
             variants={priceTagVariants}
             initial="initial"
             animate={isHovered ? "hover" : "initial"}
@@ -87,7 +87,7 @@ const ProductCard = ({ id, name, description, image, price, index }: ProductCard
             <AnimatePresence>
               {isHovered && (
                 <motion.div 
-                  className="glass-modern text-text-secondary py-3 px-9 rounded-full font-medium"
+                  className="glass-modern text-text-secondary py-2 px-6 rounded-full text-xs font-medium"
                   variants={buttonVariants}
                   initial="initial"
                   animate="hover"
@@ -101,17 +101,17 @@ const ProductCard = ({ id, name, description, image, price, index }: ProductCard
         </div>
         
         {/* Product details with animations */}
-        <div className="p-6 flex flex-col flex-grow bg-white">
+        <div className="p-3 sm:p-4 flex flex-col flex-grow bg-white">
           <div className="flex-grow">
             <motion.h3 
-              className="font-serif text-xl font-medium mb-3 inline-block text-text-primary"
+              className="font-serif text-base font-medium mb-1 inline-block text-text-primary"
               variants={textColorVariants}
               initial="initial"
               animate={isHovered ? "hover" : "initial"}
             >
               {name}
             </motion.h3>
-            <p className="text-text-primary/70 text-sm mb-5 line-clamp-2 leading-relaxed">{description}</p>
+            <p className="text-text-primary/70 text-xs mb-3 line-clamp-2 leading-relaxed">{description}</p>
           </div>
           
           {/* Animated underline */}

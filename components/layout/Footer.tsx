@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { FiInstagram, FiSend, FiTwitter, FiArrowUpRight, FiCheck } from 'react-icons/fi';
+import { FiInstagram, FiArrowUpRight } from 'react-icons/fi';
 import Link from 'next/link';
+import Image from 'next/image';
 
 // Helper components defined first
 const FooterLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
@@ -18,137 +19,86 @@ const FooterLink = ({ href, children }: { href: string; children: React.ReactNod
   </li>
 );
 
-const SocialIcon = ({ icon, href }: { icon: React.ReactNode; href: string }) => (
+// Updated SocialIcon component with consistent width and alignment
+const SocialIcon = ({ icon, href, label }: { icon: React.ReactNode; href: string; label: string }) => (
   <Link 
     href={href} 
     target="_blank" 
     rel="noopener noreferrer"
-    className="relative w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center transition-all duration-300 group overflow-hidden"
+    className="inline-flex items-center gap-3 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg bg-gray-800 hover:bg-accent transition-all duration-300 group text-white w-28 sm:w-32"
   >
-    <span className="absolute inset-0 bg-accent transform scale-0 transition-transform duration-300 group-hover:scale-100 rounded-full" />
-    <span className="relative z-10">{icon}</span>
+    <span className="flex items-center justify-center w-5">
+      {icon}
+    </span>
+    <span className="text-xs sm:text-sm font-medium">{label}</span>
   </Link>
 );
 
 // Main component
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const [email, setEmail] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      // Here you would typically connect to your email service
-      console.log('Email submitted:', email);
-      setIsSubmitted(true);
-      setTimeout(() => {
-        setIsSubmitted(false);
-        setEmail('');
-      }, 3000);
-    }
-  };
   
   return (
-    <footer className="bg-primary text-text-secondary pt-24 pb-8">
+    <footer className="bg-black text-text-secondary pt-8 sm:pt-16 md:pt-20 pb-6 sm:pb-8">
       <div className="container-padding mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="row-span-1 md:row-span-2 lg:row-span-1"
-          >
-            <div className="flex items-center mb-6">
-              <h3 className="text-2xl font-serif font-bold">NoBadHair</h3>
-              <div className="ml-2 w-2 h-2 bg-accent rounded-full" />
-            </div>
-            
-            <p className="text-text-secondary/90 mb-8 leading-relaxed">
-              A solution oriented brand based in Indonesia. 
-              Focusing on minimalism, creating and developing grooming needs 
-              based on our years of professional experience.
-            </p>
-            
-            <div className="flex space-x-4">
-              <SocialIcon icon={<FiInstagram />} href="https://instagram.com" />
-              <SocialIcon icon={<FiTwitter />} href="https://twitter.com" />
-            </div>
-          </motion.div>
-
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-4 sm:mb-10 md:mb-12 flex flex-col items-center"
+        >
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-2 sm:mb-6">RAMBUT SEHAT, PRAKTIS TANPA RIBET</h2>
+          <div className="relative w-20 h-20 sm:w-40 sm:h-40 mx-auto">
+            <Image 
+              src="/images/LOGObg.png"
+              alt="DAHS Logo"
+              width={80}
+              height={80}
+              className="object-contain sm:hidden"
+            />
+            <Image 
+              src="/images/LOGObg.png"
+              alt="DAHS Logo"
+              width={160}
+              height={160}
+              className="object-contain hidden sm:block"
+            />
+          </div>
+        </motion.div>
+        
+        <div className="grid grid-cols-2 gap-6 sm:gap-10 mb-8 sm:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
+            className="mt-0 sm:mt-0 flex flex-col"
           >
-            <h3 className="text-xl font-bold mb-6 relative inline-block">
+            <h3 className="text-base sm:text-xl font-bold mb-2 sm:mb-6 relative inline-block">
               Shop
-              <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-accent/60" />
+              <span className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-0.5 bg-accent/60" />
             </h3>
-            <ul className="space-y-3">
-              <FooterLink href="/shop/shampoo">Shampoo</FooterLink>
-              <FooterLink href="/shop/conditioner">Conditioner</FooterLink>
-              <FooterLink href="/shop/styling">Styling Products</FooterLink>
+            <ul className="space-y-1 sm:space-y-3 text-xs sm:text-base mb-3 sm:mb-6">
               <FooterLink href="/shop/all">All Products</FooterLink>
             </ul>
+            
+            <div className="flex flex-col gap-2 sm:gap-3 mt-1 sm:mt-2">
+              <SocialIcon icon={<FiInstagram size={14} />} href="https://instagram.com" label="Instagram" />
+            </div>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-0 sm:mt-0"
           >
-            <h3 className="text-xl font-bold mb-6 relative inline-block">
+            <h3 className="text-base sm:text-xl font-bold mb-2 sm:mb-6 relative inline-block">
               Information
-              <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-accent/60" />
+              <span className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-0.5 bg-accent/60" />
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-1 sm:space-y-3 text-xs sm:text-base">
               <FooterLink href="/about">About Us</FooterLink>
-              <FooterLink href="/reviews">Customer Reviews</FooterLink>
-              <FooterLink href="/faq">FAQ</FooterLink>
-              <FooterLink href="/shipping">Shipping & Returns</FooterLink>
             </ul>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <h3 className="text-xl font-bold mb-6 relative inline-block">
-              Newsletter
-              <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-accent/60" />
-            </h3>
-            <form onSubmit={handleSubmit} className="relative">
-              <input 
-                type="email" 
-                placeholder="Your email" 
-                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg focus:outline-none focus:border-accent transition-all duration-300 pr-12 text-text-secondary"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <button 
-                type="submit"
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 rounded-full bg-accent flex items-center justify-center transition-all duration-300 hover:bg-accent/80"
-                aria-label="Subscribe to newsletter"
-              >
-                {isSubmitted ? (
-                  <FiCheck className="w-4 h-4" />
-                ) : (
-                  <FiSend className="w-4 h-4" />
-                )}
-              </button>
-            </form>
-            {isSubmitted && (
-              <motion.p 
-                initial={{ opacity: 0, y: 5 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-accent mt-2 text-sm"
-              >
-                Thank you for subscribing!
-              </motion.p>
-            )}
           </motion.div>
         </div>
 
@@ -156,14 +106,16 @@ const Footer = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center"
+          className="pt-4 sm:pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-start items-start"
         >
-          <p className="text-text-secondary/70 text-sm mb-4 md:mb-0">
-            © {currentYear} NoBadHair. All rights reserved.
+          <p className="text-text-secondary/70 text-xs sm:text-sm mb-3 md:mb-0 text-left">
+            © {currentYear} TimKemajuan<br />
+            Dahs Hair Care<br />
+            TrplPolinela. All rights reserved.
           </p>
-          <div className="flex space-x-6">
-            <Link href="/privacy" className="text-text-secondary/70 text-sm hover:text-accent transition">Privacy Policy</Link>
-            <Link href="/terms" className="text-text-secondary/70 text-sm hover:text-accent transition">Terms of Service</Link>
+          <div className="flex space-x-4 sm:space-x-6 md:ml-auto self-start">
+            <Link href="/privacy" className="text-text-secondary/70 text-xs sm:text-sm hover:text-accent transition">Privacy Policy</Link>
+            <Link href="/terms" className="text-text-secondary/70 text-xs sm:text-sm hover:text-accent transition">Terms of Service</Link>
           </div>
         </motion.div>
       </div>

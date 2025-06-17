@@ -3,9 +3,9 @@
  */
 export const NAV_LINKS = [
   { name: 'Home', href: '#home' },
-  { name: 'Shop', href: '#shop' },
   { name: 'Connect', href: '#connect' },
   { name: 'About', href: '#about' },
+  { name: 'Shop', href: '#shop' },
   { name: 'Reviews', href: '#reviews' },
 ];
 

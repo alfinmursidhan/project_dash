@@ -44,66 +44,66 @@ const EthicalSection = () => {
   // Static version for SSR
   if (!isMounted) {
     return (
-      <section id="about" className="py-24 md:py-32 bg-white overflow-hidden" ref={ref}>
+      <section id="ethical" className="py-16 md:py-32 bg-white overflow-hidden" ref={ref}>
         <div className="container-padding mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-            <div className="max-w-xl">
-              <div className="h-1 bg-accent mb-8 w-0"></div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
+            <div className="max-w-xl mx-auto lg:mx-0">
+              <div className="h-1 bg-accent mb-4 sm:mb-8 w-0"></div>
               
-              <h2 className="font-carelia heading-lg mb-8 relative text-text-primary">
+              <h2 className="font-yeseva heading-lg mb-4 sm:mb-8 relative text-text-primary">
                 <span className="relative z-10">ETHICALLY MADE</span>
                 <br />
                 <span className="relative z-10">WITH GOOD PURPOSE</span>
               </h2>
               
-              <p className="font-the-seasons text-text-primary/80 mb-10 leading-relaxed text-lg">
+              <p className="font-the-seasons text-text-primary/80 mb-6 sm:mb-10 leading-relaxed text-base sm:text-lg">
                 A solution oriented brand based in Indonesia. Focusing on minimalism, 
                 creating and developing grooming needs based on our years of 
                 professional experience. Each line of products is designed uniquely, 
                 with our own idealism, best formula, and of course, good purpose.
               </p>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div className="grid grid-cols-2 gap-4 sm:gap-8">
                 {features.map((feature, index) => (
                   <div 
                     key={index}
-                    className="flex hover:translate-x-1 transition-transform duration-300"
+                    className="flex items-start"
                   >
-                    <div className="flex-shrink-0 mr-4 mt-1">
-                      <div className="bg-accent text-white w-8 h-8 rounded-full flex items-center justify-center shadow-lg shadow-accent/20">
-                        <FiCheck className="w-5 h-5" />
+                    <div className="flex-shrink-0 mr-2 sm:mr-3">
+                      <div className="bg-amber-400 w-5 h-5 rounded-full flex items-center justify-center">
+                        <FiCheck className="w-3 h-3 text-white" />
                       </div>
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg mb-2 text-text-primary">{feature.title}</h3>
-                      <p className="text-text-primary/70 leading-relaxed">{feature.description}</p>
+                      <h3 className="font-medium text-sm mb-0 text-text-primary">{feature.title}</h3>
+                      <p className="text-text-primary/70 leading-relaxed text-xs">{feature.description}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
             
-            <div className="relative">
+            <div className="relative mt-10 lg:mt-0">
               <div className="absolute -inset-4 rounded-xl bg-accent/10 z-0"></div>
               
-              <div className="rounded-xl overflow-hidden h-[500px] lg:h-[600px] relative z-10 shadow-2xl">
+              <div className="rounded-xl overflow-hidden h-[400px] sm:h-[500px] lg:h-[600px] relative z-10 shadow-2xl">
                 <div 
                   className="w-full h-full bg-cover bg-center"
                   style={{
-                    backgroundImage: "url('/images/products/hair1.png')",
+                    backgroundImage: "url('/images/Handy, Quick, and Effortless.jpg')",
                     backgroundSize: "cover",
                     backgroundPosition: "center"
                   }}
                 />
               </div>
               
-              <div className="absolute -bottom-10 -left-10 lg:-left-20 bg-white p-6 lg:p-8 rounded-xl shadow-xl max-w-xs z-20">
-                <h3 className="font-the-seasons text-xl lg:text-2xl font-bold mb-3 text-text-primary">#SayYesToNØ</h3>
-                <p className="text-text-primary/70">
+              <div className="absolute -bottom-6 -left-6 sm:-bottom-10 sm:-left-10 lg:-left-20 bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-xl max-w-xs z-20">
+                <h3 className="font-the-seasons text-lg sm:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 text-text-primary">#SayYesToNØ</h3>
+                <p className="text-text-primary/70 text-sm sm:text-base">
                   Join our movement for better hair care with products made from natural ingredients.
                 </p>
                 
-                <div className="absolute -top-2 -right-2 w-12 h-12 bg-accent rounded-full flex items-center justify-center text-white font-bold text-xl">
+                <div className="absolute -top-2 -right-2 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-accent rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-lg lg:text-xl">
                   NØ
                 </div>
               </div>
@@ -115,23 +115,23 @@ const EthicalSection = () => {
   }
   
   return (
-    <section id="about" className="py-24 md:py-32 bg-white overflow-hidden" ref={ref}>
+    <section id="ethical" className="py-16 md:py-32 bg-white overflow-hidden" ref={ref}>
       <div className="container-padding mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-xl"
+            className="max-w-xl mx-auto lg:mx-0"
           >
             <motion.div
               initial={{ width: 0 }}
               animate={isInView ? { width: "80px" } : { width: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="h-1 bg-accent mb-8"
+              className="h-1 bg-accent mb-4 sm:mb-8"
             />
             
-            <h2 className="font-carelia heading-lg mb-8 relative text-text-primary">
+            <h2 className="font-yeseva heading-lg mb-4 sm:mb-8 relative text-text-primary">
               <span className="relative z-10">ETHICALLY MADE</span>
               <br />
               <span className="relative z-10">WITH GOOD PURPOSE</span>
@@ -147,7 +147,7 @@ const EthicalSection = () => {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="font-the-seasons text-text-primary/80 mb-10 leading-relaxed text-lg"
+              className="font-the-seasons text-text-primary/80 mb-6 sm:mb-10 leading-relaxed text-base sm:text-lg"
             >
               A solution oriented brand based in Indonesia. Focusing on minimalism, 
               creating and developing grooming needs based on our years of 
@@ -155,23 +155,23 @@ const EthicalSection = () => {
               with our own idealism, best formula, and of course, good purpose.
             </motion.p>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div className="grid grid-cols-2 gap-4 sm:gap-y-5">
               {features.map((feature, index) => (
                 <motion.div 
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.5, delay: 0.4 + (index * 0.1) }}
-                  className="flex hover:translate-x-1 transition-transform duration-300"
+                  className="flex items-start"
                 >
-                  <div className="flex-shrink-0 mr-4 mt-1">
-                    <div className="bg-accent text-white w-8 h-8 rounded-full flex items-center justify-center shadow-lg shadow-accent/20">
-                      <FiCheck className="w-5 h-5" />
+                  <div className="flex-shrink-0 mr-2 sm:mr-3">
+                    <div className="bg-amber-400 w-5 h-5 rounded-full flex items-center justify-center">
+                      <FiCheck className="w-3 h-3 text-white" />
                     </div>
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg mb-2 text-text-primary">{feature.title}</h3>
-                    <p className="text-text-primary/70 leading-relaxed">{feature.description}</p>
+                    <h3 className="font-medium text-sm mb-0 text-text-primary">{feature.title}</h3>
+                    <p className="text-text-primary/70 leading-relaxed text-xs">{feature.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -182,7 +182,7 @@ const EthicalSection = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-            className="relative"
+            className="relative mt-10 lg:mt-0"
             ref={imageRef}
           >
             <motion.div
@@ -193,13 +193,13 @@ const EthicalSection = () => {
             />
             
             <motion.div 
-              className="rounded-xl overflow-hidden h-[500px] lg:h-[600px] relative z-10 shadow-2xl"
+              className="rounded-xl overflow-hidden h-[400px] sm:h-[500px] lg:h-[600px] relative z-10 shadow-2xl"
               style={{ scale }}
             >
               <div 
                 className="w-full h-full bg-cover bg-center"
                 style={{
-                  backgroundImage: "url('/images/products/hair1.png')",
+                  backgroundImage: "url('/images/Handy, Quick, and Effortless.jpg')",
                   backgroundSize: "cover",
                   backgroundPosition: "center"
                 }}
@@ -210,10 +210,10 @@ const EthicalSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: 0.8 }}
-              className="absolute -bottom-10 -left-10 lg:-left-20 bg-white p-6 lg:p-8 rounded-xl shadow-xl max-w-xs z-20"
+              className="absolute -bottom-6 -left-6 sm:-bottom-10 sm:-left-10 lg:-left-20 bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-xl max-w-xs z-20"
             >
-              <h3 className="font-the-seasons text-xl lg:text-2xl font-bold mb-3 text-text-primary">#SayYesToNØ</h3>
-              <p className="text-text-primary/70">
+              <h3 className="font-the-seasons text-lg sm:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 text-text-primary">#SayYesToNØ</h3>
+              <p className="text-text-primary/70 text-sm sm:text-base">
                 Join our movement for better hair care with products made from natural ingredients.
               </p>
               
@@ -221,7 +221,7 @@ const EthicalSection = () => {
                 initial={{ scale: 0 }}
                 animate={isInView ? { scale: 1 } : { scale: 0 }}
                 transition={{ duration: 0.5, delay: 1, type: "spring" }}
-                className="absolute -top-2 -right-2 w-12 h-12 bg-accent rounded-full flex items-center justify-center text-white font-bold text-xl"
+                className="absolute -top-2 -right-2 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-accent rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-lg lg:text-xl"
               >
                 NØ
               </motion.div>

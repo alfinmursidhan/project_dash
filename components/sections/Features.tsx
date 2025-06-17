@@ -1,183 +1,139 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useInView, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { FiStar } from 'react-icons/fi';
+import Link from 'next/link';
 
 const Features = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [autoplay, setAutoplay] = useState(true);
 
-  // Combined benefits for both products
-  const allBenefits = [
+  // Featured products to showcase
+  const featuredProducts = [
     {
-      icon: "✦",
-      title: "Natural Hair Powder",
-      description: "Volumizing and texturizing powder with 99% natural ingredients. Suitable for all hair types.",
-      image: "/images/products/card.jpg"
+      id: 1,
+      title: "Glycolic Bright",
+      subtitle: "Anti Dark Spot Brightening Serum",
+      description: "8% Melasyl™ + Glycolic Acid + Niacinamide",
+      image: "/images/products/hairpowder-png.png",
+      rating: 5,
+      link: "/product/serum"
     },
     {
-      icon: "✦",
-      title: "Vitamin C Enriched",
-      description: "Packed with antioxidants that protect hair from environmental damage.",
-      image: "/images/benefits/vitaminc.jpg"
-    },
-    {
-      icon: "✦",
-      title: "Lightweight Formula",
-      description: "Adds volume without weighing hair down, perfect for all hair types.",
-      image: "/images/benefits/lightweight.jpg"
-    },
-    {
-      icon: "✦",
-      title: "Eco-Friendly",
-      description: "Sustainable ingredients and packaging that's better for the planet.",
-      image: "/images/benefits/eco.jpg"
-    },
-    {
-      icon: "✦",
-      title: "Deep Hydration",
-      description: "Infuses moisture into dry, damaged hair for silky smooth results.",
-      image: "/images/benefits/hydration.jpg"
-    },
-    {
-      icon: "✦",
-      title: "Anti-Frizz Protection",
-      description: "Tames unruly hair and controls frizz even in humid conditions.",
-      image: "/images/benefits/antifrizz.jpg"
-    },
-    {
-      icon: "✦",
-      title: "Heat Protection",
-      description: "Creates a protective barrier against styling damage from heat tools.",
-      image: "/images/benefits/heat.jpg"
-    },
-    {
-      icon: "✦",
-      title: "Natural Oils",
-      description: "Blend of essential oils that nourish and add natural shine to hair.",
-      image: "/images/benefits/oils.jpg"
+      id: 2,
+      title: "Glycolic Bright",
+      subtitle: "Anti-Dark Spot Daily UV SPF 50",
+      description: "UV SPF 50",
+      image: "/images/products/Detangler Polos.png",
+      rating: 5,
+      link: "/product/sunscreen"
     }
   ];
 
-  // Auto-advance slides with improved timing
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-    
-    // Only start the autoplay when the component is in view
-    if (autoplay && isInView) {
-      interval = setInterval(() => {
-        setCurrentSlide((prev) => (prev + 1) % allBenefits.length);
-      }, 4000); // Slightly longer duration for better readability
-    }
-    
-    return () => {
-      if (interval) clearInterval(interval);
-    };
-  }, [autoplay, allBenefits.length, isInView]);
+  // Render star ratings
+  const renderRating = (rating: number) => {
+    return (
+      <div className="flex items-center">
+        {[...Array(5)].map((_, i) => (
+          <FiStar 
+            key={i} 
+            className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${i < rating ? "text-accent fill-current" : "text-gray-300"}`} 
+          />
+        ))}
+        <span className="ml-1 text-xs font-medium">
+          {rating > 0 ? `${rating}/5` : "0/5"}
+        </span>
+      </div>
+    );
+  };
 
-  // Ensure autoplay starts when the component comes into view
-  useEffect(() => {
-    if (isInView) {
-      setAutoplay(true);
-    }
-  }, [isInView]);
-
-  // Pause autoplay on hover, resume on mouse leave
-  const handleMouseEnter = () => setAutoplay(false);
-  const handleMouseLeave = () => setAutoplay(true);
-
-  // Function to manually change slides
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-    // Temporarily pause autoplay when manually changing slides
-    setAutoplay(false);
-    // Resume autoplay after a short delay
-    setTimeout(() => setAutoplay(true), 2000);
+  // Function to handle image errors
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    const target = e.target as HTMLImageElement;
+    target.src = "/images/products/card.jpg"; // Fallback image
+    target.onerror = null; // Prevent infinite loop
   };
 
   return (
-    <section id="features" ref={ref} className="py-16 bg-secondary">
+    <section id="about" ref={ref} className="py-8 sm:py-10 md:py-12 bg-secondary">
       <div className="container-padding mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-12"
-        >
-          <h2 className="heading-lg mb-4 text-text-primary">PRODUCT BENEFITS</h2>
-          <p className="text-text-primary/80 max-w-2xl mx-auto">
-            Our premium hair products are crafted with natural ingredients to deliver exceptional results for all hair types.
-          </p>
-        </motion.div>
+        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
+          {/* Left side - Text content */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.7 }}
+            className="w-full md:w-1/3 flex flex-col justify-center md:py-10 mb-4 md:mb-0"
+          >
+            <h3 className="text-base sm:text-lg font-medium mb-1 text-text-primary">Jelajahi Produk</h3>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-text-primary">Terpopuler Kami</h2>
+            <p className="text-text-primary/80 mb-4 sm:mb-6 text-sm sm:text-base">
+              Temukan produk-produk unggulan kami yang telah dipercaya oleh banyak pelanggan. 
+              Dirancang dengan formula alami untuk hasil terbaik.
+            </p>
+          </motion.div>
 
-        {/* Full-width image slider with enhanced transitions */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.7 }}
-          className="w-full"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className="relative h-[500px] md:h-[600px] w-full rounded-xl overflow-hidden shadow-xl">
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.div
-                key={currentSlide}
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.7 }}
-                className="absolute inset-0"
-              >
-                <div 
-                  className="w-full h-full bg-cover bg-center"
-                  style={{ 
-                    backgroundImage: `url(${allBenefits[currentSlide].image})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end">
-                  {currentSlide !== 0 && (
-                    <motion.div 
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 0.7, delay: 0.3 }}
-                      className="p-8 md:p-12 text-text-secondary w-full"
-                    >
-                      <h3 className="text-2xl md:text-3xl font-serif mb-3">{allBenefits[currentSlide].title}</h3>
-                      <p className="text-text-secondary/90 text-base md:text-lg max-w-xl">{allBenefits[currentSlide].description}</p>
-                    </motion.div>
-                  )}
-                </div>
-              </motion.div>
-            </AnimatePresence>
-            
-            {/* Slider indicators with active animation */}
-            <div className="absolute bottom-6 left-0 right-0 flex justify-center space-x-3">
-              {allBenefits.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`h-2 rounded-full transition-all duration-500 ${
-                    currentSlide === index 
-                      ? 'bg-text-secondary w-8 shadow-lg' 
-                      : 'bg-text-secondary/50 w-2 hover:bg-text-secondary/70'
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
+          {/* Right side - Product cards */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="w-full md:w-2/3"
+          >
+            {/* Mobile horizontal scroll view */}
+            <div className="flex sm:hidden overflow-x-auto pb-4 snap-x snap-mandatory gap-3 scrollbar-hide">
+              {featuredProducts.map((product, index) => (
+                <Link href={product.link} key={product.id} className="block flex-shrink-0 snap-start w-[75%]">
+                  <div className="bg-secondary rounded-lg overflow-hidden border border-gray-200/20 transition-all duration-300 h-full hover:shadow-lg hover:-translate-y-1">
+                    <div className="relative aspect-square w-full overflow-hidden">
+                      <img 
+                        src={product.image} 
+                        alt={product.title}
+                        className="w-full h-full object-contain p-3"
+                        onError={handleImageError}
+                      />
+                    </div>
+                    <div className="p-3 sm:p-4">
+                      <h4 className="text-xs font-medium text-text-primary">{product.title}</h4>
+                      <h3 className="text-sm sm:text-base font-bold text-text-primary mb-1">{product.subtitle}</h3>
+                      <p className="text-xs text-text-primary/70 mb-2">{product.description}</p>
+                      <div className="mt-1">
+                        {renderRating(product.rating)}
+                      </div>
+                    </div>
+                  </div>
+                </Link>
               ))}
             </div>
             
-            {/* Auto-play indicator */}
-            <div className="absolute top-6 right-6">
-              <div className={`w-2 h-2 rounded-full ${autoplay ? 'bg-accent animate-pulse' : 'bg-text-secondary/50'}`} />
+            {/* Desktop grid view */}
+            <div className="hidden sm:grid sm:grid-cols-2 gap-4 sm:gap-6">
+              {featuredProducts.map((product, index) => (
+                <Link href={product.link} key={`desktop-${product.id}`} className="block">
+                  <div className="bg-secondary rounded-lg overflow-hidden border border-gray-200/20 transition-all duration-300 h-full hover:shadow-lg hover:-translate-y-1">
+                    <div className="relative aspect-square w-full overflow-hidden">
+                      <img 
+                        src={product.image} 
+                        alt={product.title}
+                        className="w-full h-full object-contain p-3"
+                        onError={handleImageError}
+                      />
+                    </div>
+                    <div className="p-3 sm:p-4">
+                      <h4 className="text-xs font-medium text-text-primary">{product.title}</h4>
+                      <h3 className="text-sm sm:text-base font-bold text-text-primary mb-1">{product.subtitle}</h3>
+                      <p className="text-xs text-text-primary/70 mb-2">{product.description}</p>
+                      <div className="mt-1">
+                        {renderRating(product.rating)}
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

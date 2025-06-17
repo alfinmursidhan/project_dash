@@ -23,5 +23,8 @@ export interface FilterOption {
   count: number;
 }
 
+/**
+ * Export all types from the application
+ */
 export * from './product';
 export * from './components'; 

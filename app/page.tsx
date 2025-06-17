@@ -3,11 +3,11 @@ import {
   Navbar,
   Hero,
   Features,
-  ProductShowcase,
   ReviewSection,
   StoreLinks,
   EthicalSection,
-  Footer
+  Footer,
+  ThankYouSection
 } from '@/components';
 
 /**
@@ -32,15 +32,15 @@ export default function Home() {
       </Suspense>
       
       <Suspense fallback={<LoadingFallback />}>
-        <Features key="features" />
-      </Suspense>
-      
-      <Suspense fallback={<LoadingFallback />}>
-        <ProductShowcase key="productShowcase" />
+        <ThankYouSection key="thankYouSection" />
       </Suspense>
       
       <Suspense fallback={<LoadingFallback />}>
         <StoreLinks key="storeLinks" />
+      </Suspense>
+      
+      <Suspense fallback={<LoadingFallback />}>
+        <Features key="features" />
       </Suspense>
       
       <Suspense fallback={<LoadingFallback />}>

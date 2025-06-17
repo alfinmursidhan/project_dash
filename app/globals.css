@@ -6,13 +6,13 @@
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
   --primary: #39644a;
-  --secondary: #f6efdc;
+  --secondary: #F3F3F3;
   --accent: #E8B87D;
   --text-primary: #39644a;
   --text-secondary: #39644a;
   --transition-ease: cubic-bezier(0.65, 0, 0.35, 1);
   --font-the-seasons: 'The Seasons', serif;
-  --font-carelia: 'Carelia', serif;
+  --font-yeseva-one: 'Yeseva One', serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -32,21 +32,21 @@
   font-display: swap;
 }
 
-/* Tambahkan deklarasi font-face untuk memastikan font Carelia dikenali */
+/* Tambahkan deklarasi font-face untuk memastikan font Yeseva One dikenali */
 @font-face {
-  font-family: 'Carelia';
-  src: url('/fonts/carelia/Carelia-Upright.woff2') format('woff2'),
-       url('/fonts/carelia/Carelia-Upright.woff') format('woff');
+  font-family: 'Yeseva One';
+  src: url('/fonts/yeseva-one/YesevaOne-Regular.woff2') format('woff2'),
+       url('/fonts/yeseva-one/YesevaOne-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
-/* Aturan untuk font Carelia (untuk NATURAL HAIR SOLUTIONS) */
-.font-carelia {
-  font-family: var(--font-carelia);
+/* Aturan untuk font Yeseva One (untuk headings) */
+.font-yeseva {
+  font-family: var(--font-yeseva-one);
   letter-spacing: 0.02em;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 /* Aturan untuk font The Seasons (untuk teks subtitle) */
@@ -57,11 +57,11 @@
   font-feature-settings: "liga", "kern";
 }
 
-/* Kustomisasi heading utama menggunakan Carelia */
+/* Kustomisasi heading utama menggunakan Yeseva One */
 h1, h2, .heading-xl, .heading-lg {
-  font-family: var(--font-carelia);
+  font-family: var(--font-yeseva-one);
   letter-spacing: 0.02em;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 /* Kustomisasi subteks menggunakan The Seasons */
@@ -166,6 +166,11 @@ body {
     scrollbar-width: thin;
     scrollbar-color: var(--primary) transparent;
   }
+  
+  /* Shadow for text on images */
+  .shadow-text {
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6), 0px 2px 6px rgba(0, 0, 0, 0.3);
+  }
 }
 
 @layer components {
@@ -185,7 +190,7 @@ body {
   }
   
   .container-padding {
-    @apply px-6 md:px-12 lg:px-24 mx-auto;
+    @apply px-3 sm:px-6 md:px-12 lg:px-24 mx-auto;
     max-width: 1440px;
   }
   
