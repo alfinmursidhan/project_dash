@@ -1,6 +1,6 @@
-# Dahs - Premium Hair Products
+# dahs - Premium Hair Products Website
 
-A modern, responsive website for a premium hair products brand, built with Next.js, React, TypeScript, and Tailwind CSS.
+A modern, responsive website for premium hair products built with Next.js, TypeScript, and Tailwind CSS.
 
 ## Custom Fonts
 
@@ -22,46 +22,64 @@ This project uses the following custom fonts:
 
 ## Project Structure
 
-The project has been organized to improve maintainability and scalability:
+The project follows a clean, modular structure:
 
 ```
-├── app/                 # Next.js app directory with routes
+├── app/                 # Next.js App Router structure
 │   ├── about/           # About page
 │   ├── connect/         # Contact page
 │   ├── product/         # Product details page
 │   ├── reviews/         # Reviews page
-│   ├── shop/            # Shop page
-│   ├── globals.css      # Global styles
+│   ├── shop/            # Shop product listing
+│   ├── styles/          # Page-specific styles
+│   ├── tagline/         # Tagline page
+│   ├── globals.css      # Global CSS
 │   ├── layout.tsx       # Root layout
 │   └── page.tsx         # Home page
-│
 ├── components/          # React components
 │   ├── layout/          # Layout components (Navbar, Footer)
 │   ├── products/        # Product-related components
 │   ├── sections/        # Page section components
-│   ├── ui/              # Reusable UI components
-│   └── index.ts         # Component exports
-│
-├── data/                # Mock data and constants
-│   ├── products.ts      # Product data
-│   └── index.ts         # Data exports
-│
+│   └── ui/              # Reusable UI components
+├── data/                # Static data
 ├── public/              # Static assets
-│   ├── fonts/           # Custom font files
-│   └── images/          # Image assets
-│
 ├── types/               # TypeScript type definitions
-│   ├── components.ts    # Component prop types
-│   ├── product.ts       # Product-related types
-│   └── index.ts         # Type exports
-│
-└── utils/               # Utility functions and helpers
-    ├── animations.ts    # Animation utilities
-    ├── constants.ts     # Application constants
-    ├── formatters.ts    # Formatting utilities
-    ├── hooks/           # Custom React hooks
-    └── index.ts         # Utility exports
+└── utils/               # Utility functions and hooks
 ```
+
+## Technologies
+
+- **Next.js**: React framework for server-rendered applications
+- **TypeScript**: Static typing for JavaScript
+- **Tailwind CSS**: Utility-first CSS framework
+- **Framer Motion**: Animation library
+- **GSAP**: Animation toolkit
+
+## Scripts
+
+- `npm run dev`: Start development server
+- `npm run build`: Build production version
+- `npm run start`: Run production server
+- `npm run lint`: Run ESLint
+- `npm run clean`: Clean build cache
+- `npm run download-fonts`: Download required fonts
+
+## Code Optimization
+
+This project follows best practices for clean code:
+
+1. Modular component structure
+2. Clear separation of concerns
+3. Consistent naming conventions
+4. Optimized asset loading
+5. Proper TypeScript typing
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Run development server: `npm run dev`
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
 ## Key Features
 
@@ -71,30 +89,6 @@ The project has been organized to improve maintainability and scalability:
 - Component-based architecture
 - Custom utility functions and hooks
 - Clean and maintainable code structure
-
-## Getting Started
-
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Add required custom fonts (see Custom Fonts section above)
-4. Run the development server:
-   ```bash
-   npm run dev
-   ```
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
-
-## Technologies Used
-
-- **Next.js** - React framework
-- **React** - UI library
-- **TypeScript** - Type-safe JavaScript
-- **Tailwind CSS** - Utility-first CSS framework
-- **Framer Motion** - Animation library
-- **React Icons** - Icon library
-- **GSAP** - Animation library
 
 ## Code Organization Principles
 

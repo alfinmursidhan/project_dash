@@ -26,26 +26,26 @@ const Hero = () => {
     style.textContent = `
       @keyframes ellipseDraw {
         0% {
-          stroke-dashoffset: 800;
+          stroke-dashoffset: 300;
         }
         50% {
           stroke-dashoffset: 0;
         }
         100% {
-          stroke-dashoffset: -800;
+          stroke-dashoffset: -300;
         }
       }
       
       .animate-ellipse-draw {
-        animation: ellipseDraw 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        animation: ellipseDraw 4s ease-in-out infinite;
       }
       
       @keyframes dotRotate {
         from {
-          transform: rotate(0deg) translateX(150px) rotate(0deg);
+          transform: rotate(0deg) translateX(170px) rotate(0deg);
         }
         to {
-          transform: rotate(360deg) translateX(150px) rotate(-360deg);
+          transform: rotate(360deg) translateX(170px) rotate(-360deg);
         }
       }
       
@@ -86,9 +86,6 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-gradient-primary pt-24 sm:pt-28"
     >
-      {/* Cover for the top orange line */}
-      <div className="absolute top-0 left-0 right-0 h-4 bg-secondary z-10"></div>
-      
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-5">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -129,85 +126,77 @@ const Hero = () => {
                 <span className="relative block mb-2 sm:mb-4 ml-0">
                   PRAKTIS
                 </span>
-                <span className="relative block mb-2 sm:mb-4 ml-0 md:ml-[10%] lg:ml-[14%]">
-                  <span className="inline-block whitespace-nowrap relative">
-                    TANPA <span className="relative inline-block" id="ribet-text">RIBET</span>
-                  </span>
-
-                  {/* Ellipse animation container specifically for "RIBET" */}
-                  <span 
-                    className="absolute" 
-                    style={{ 
-                      width: '0',
-                      height: '0',
-                      overflow: 'visible',
-                      display: 'inline-block',
-                      top: '50%',
-                      left: '84%', /* Position adjusted to target "RIBET" more precisely */
-                      transform: 'translate(-50%, -50%)',
-                      pointerEvents: 'none'
-                    }}
-                  >
-                    {/* Circular animation around "RIBET" */}
-                    <div className="absolute" style={{ width: "320px", height: "320px", top: "-160px", left: "-160px" }}>
-                      <svg width="320" height="320" viewBox="0 0 320 320" className="animate-spin-slow">
-                        <circle 
-                          cx="160" 
-                          cy="160" 
-                          r="150" 
-                          fill="none" 
-                          stroke="rgba(255, 203, 138, 0.3)" 
-                          strokeWidth="1.5" 
-                          strokeDasharray="4,8" 
+                <span className="relative block ml-0 md:ml-[10%] lg:ml-[14%]">
+                  TANPA <span className="relative inline-block">
+                    <span className="relative z-10">RIBET</span>
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+                      {/* Circular animation around "RIBET" */}
+                      <div className="absolute" style={{ width: "380px", height: "380px", top: "-190px", left: "-190px" }}>
+                        <svg width="380" height="380" viewBox="0 0 380 380">
+                          <circle 
+                            cx="190" 
+                            cy="190" 
+                            r="170" 
+                            fill="none" 
+                            stroke="rgba(255, 203, 138, 0.3)" 
+                            strokeWidth="1.5" 
+                            strokeDasharray="4,8" 
+                          />
+                        </svg>
+                        {/* Dot that rotates around the circle */}
+                        <div 
+                          className="absolute animate-dot-rotate" 
+                          style={{ 
+                            width: "12px", 
+                            height: "12px", 
+                            top: "190px", 
+                            left: "190px" 
+                          }}
+                        >
+                          <div 
+                            className="w-full h-full rounded-full bg-accent animate-pulsate"
+                          ></div>
+                        </div>
+                      </div>
+                    
+                      {/* Elips di sekitar "RIBET" */}
+                      <svg 
+                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" 
+                        width="350" 
+                        height="160" 
+                        viewBox="0 0 350 160"
+                      >
+                        <defs>
+                          <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="2" result="blur" />
+                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                          </filter>
+                        </defs>
+                        <ellipse
+                          cx="175"
+                          cy="80"
+                          rx="170"
+                          ry="65"
+                          fill="none"
+                          stroke="#F3C088"
+                          strokeWidth="3"
+                          strokeDasharray="1050"
+                          className="animate-ellipse-draw"
+                          filter="url(#glow)"
                         />
                       </svg>
-                      {/* Dot that rotates around the circle */}
-                      <div 
-                        className="absolute animate-dot-rotate" 
-                        style={{ 
-                          width: "12px", 
-                          height: "12px", 
-                          top: "160px", 
-                          left: "160px",
-                          transformOrigin: "center center"
-                        }}
-                      >
-                        <div 
-                          className="w-full h-full rounded-full bg-accent animate-pulsate"
-                        ></div>
-                      </div>
                     </div>
-                  
-                    {/* Ellipse around "RIBET" */}
-                    <svg 
-                      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" 
-                      width="300" 
-                      height="180" 
-                      viewBox="0 0 300 180"
-                      style={{
-                        filter: 'drop-shadow(0px 0px 4px rgba(243, 192, 136, 0.5))'
-                      }}
-                    >
-                      <defs>
-                        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                          <feGaussianBlur stdDeviation="2" result="blur" />
-                          <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                        </filter>
-                      </defs>
-                      <ellipse
-                        cx="150"
-                        cy="90"
-                        rx="145"
-                        ry="80"
-                        fill="none"
-                        stroke="#F3C088"
-                        strokeWidth="2.5"
-                        strokeDasharray="800"
-                        strokeLinecap="round"
-                        className="animate-ellipse-draw"
-                      />
-                    </svg>
                   </span>
+                  <motion.div 
+                    className="absolute -bottom-4 sm:-bottom-6 left-0 h-1.5 sm:h-2 bg-accent"
+                    initial={{ width: "0%" }}
+                    animate={{ width: "100%" }}
+                    transition={{ 
+                      duration: 1.2, 
+                      ease: "easeOut",
+                      delay: 0.5
+                    }}
+                  />
                 </span>
               </div>
             </motion.h1>

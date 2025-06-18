@@ -15,7 +15,7 @@ const Features = () => {
       id: 1,
       title: "Glycolic Bright",
       subtitle: "Anti Dark Spot Brightening Serum",
-      description: "8% Melasyl™ + Glycolic Acid + Niacinamide",
+      description: "Amla ekstrak + Aloe Vera + Vitamin C",
       image: "/images/products/hairpowder-png.png",
       rating: 5,
       link: "/product/serum"

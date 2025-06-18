@@ -98,13 +98,13 @@ const EthicalSection = () => {
               </div>
               
               <div className="absolute -bottom-6 -left-6 sm:-bottom-10 sm:-left-10 lg:-left-20 bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-xl max-w-xs z-20">
-                <h3 className="font-the-seasons text-lg sm:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 text-text-primary">#SayYesToNØ</h3>
+                <h3 className="font-the-seasons text-lg sm:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 text-text-primary">#LooksMoreNatural</h3>
                 <p className="text-text-primary/70 text-sm sm:text-base">
                   Join our movement for better hair care with products made from natural ingredients.
                 </p>
                 
                 <div className="absolute -top-2 -right-2 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-accent rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-lg lg:text-xl">
-                  NØ
+                  LooksMoreNatural
                 </div>
               </div>
             </div>
@@ -212,7 +212,7 @@ const EthicalSection = () => {
               transition={{ duration: 0.5, delay: 0.8 }}
               className="absolute -bottom-6 -left-6 sm:-bottom-10 sm:-left-10 lg:-left-20 bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-xl max-w-xs z-20"
             >
-              <h3 className="font-the-seasons text-lg sm:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 text-text-primary">#SayYesToNØ</h3>
+              <h3 className="font-the-seasons text-lg sm:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 text-text-primary">#LooksMoreNatural</h3>
               <p className="text-text-primary/70 text-sm sm:text-base">
                 Join our movement for better hair care with products made from natural ingredients.
               </p>
@@ -223,7 +223,7 @@ const EthicalSection = () => {
                 transition={{ duration: 0.5, delay: 1, type: "spring" }}
                 className="absolute -top-2 -right-2 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-accent rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-lg lg:text-xl"
               >
-                NØ
+                LooksMoreNatural
               </motion.div>
             </motion.div>
           </motion.div>

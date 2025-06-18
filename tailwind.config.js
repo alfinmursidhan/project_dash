@@ -20,6 +20,9 @@ module.exports = {
         'the-seasons': ['var(--font-the-seasons)', 'serif'],
         'yeseva': ['var(--font-yeseva-one)', 'serif'],
       },
+      animation: {
+        'spin-slow': 'spin 30s linear infinite',
+      },
     },
   },
   plugins: [
