@@ -1,5 +1,3 @@
-"use client";
-
 import React from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -17,7 +15,7 @@ interface ProductsDatabase {
 }
 
 // This is a client component, but we can still generate metadata
-export function generateMetadata({ params }: { params: { id: string } }) {
+export async function generateMetadata({ params }: { params: { id: string } }) {
   const product = products[params.id];
   
   if (!product) {
@@ -33,7 +31,7 @@ export function generateMetadata({ params }: { params: { id: string } }) {
   };
 }
 
-export default function ProductDetail({ params }: { params: { id: string } }) {
+export default function Page({ params }: { params: { id: string } }) {
   // In a real application, you would fetch the product data from an API
   const product = products[params.id];
   

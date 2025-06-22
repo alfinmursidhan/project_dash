@@ -111,7 +111,7 @@ const Footer = () => {
           <p className="text-text-secondary/70 text-xs sm:text-sm mb-3 md:mb-0 text-left">
             © {currentYear} TimKemajuan<br />
             Dahs Hair Care<br />
-            TrplPolinela. All rights reserved.
+            TrplPolinela@ac.id. All rights reserved.
           </p>
           <div className="flex space-x-4 sm:space-x-6 md:ml-auto self-start">
             <Link href="/privacy" className="text-text-secondary/70 text-xs sm:text-sm hover:text-accent transition">Privacy Policy</Link>
